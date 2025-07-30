@@ -1,5 +1,10 @@
 //Capa de Servicio encargada de la lógica y operación de la aplicación.
 //Nota: En este caso por tratarse de un ejemplo básico solo se incluye un método HTTP del tipo GET.
+import cursoSpringBoot.domain.Product;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.context.annotation.Lazy;
+//import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -14,6 +19,7 @@ import java.util.List;
 /*ConditionalOnProperty permite condicionar la creación o utilización de beans a partir de una condicion establecida en el archvio application.properties
 En este caso si la propiedad con nombre service.products tiene el valor "list" el bean a usar será esta clase 
 */
+//@Primary establece este bean como el bean predeterminado.
 @ConditionalOnProperty(name = "service.products", havingValue = "list")                                                                               
 public class ProductsServiceImpl {
 //Esta lista simula una base de datos, pero en la vida real esta base de datos se conectaria a través de la capa de Acceso a Datos.
