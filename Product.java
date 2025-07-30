@@ -6,6 +6,11 @@ public class Product {
     private Double precio;
     private Integer stock;
 
+    //Constructor vacio para que pueda ser usado por la biblioteca JACKSON para la deserialización
+    public Product() {
+
+    }
+    
     public Product(Integer id, String nombre, Double precio, Integer stock) {
         this.id = id;
         this.nombre = nombre;
