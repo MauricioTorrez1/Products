@@ -23,9 +23,17 @@ public class ProductController {
    @Autowired//@Autowired inyecta automaticamente una dependencia en este caso de la interfaz ProductService.
    @Lazy //@Lazy crea la instancia del bean de servicio hasta que sea ejecutado
    //@Qualifier("jsonResourceService" )  @Qualifier() especifica al bean a inyectar cuando existen multiples beans y tiene prioridad sobre @Primary
-    private ProductService productsService;//Instancia de la interfaz ProductService
+   //Instancia de la interfaz ProductService
+   private ProductService productsService;
+
+   @Autowired//Inyeccion del archivo que contiene nuestras propiedades de aplicación no es un bean pero @Configuration nos permite tratarlo como tal.
+   private ExternalizedConfigurations externalizedConfigurations;
+
+   
    @GetMapping
-    public ResponseEntity<?> getProducts(){
+   public ResponseEntity<?> getProducts(){
+
+        System.out.println(externalizedConfigurations.toString());
 
         List<Product> products = productsService.getProducts();//De la interfaz inyectada se ocupa el método .getProducts
 
